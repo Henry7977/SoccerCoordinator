@@ -71,14 +71,44 @@ func sortToTeam(forGroup group: [[String:Any]]) {
     }
 
 }
+
 sortToTeam(forGroup: experiencedPlayers)
 sortToTeam(forGroup: nonExperiencedPlayers)
 
+/*******************************************************************\
+ Trying the Exceeds Expectations Section but did not gain any success
+ \*******************************************************************/
+/*
+ // Declaring Average Variables
+ 
+ var teamSharksAverage = 0
+ var teamDragonsAverage = 0
+ var teamRaptorsAverage = 0
+ for player in teamSharks {
+ teamSharksAverage = teamSharksAverage + (player["Height"] as! Int)
+ }
+ for player in teamDragons {
+ teamDragonsAverage = teamDragonsAverage + (player["Height"] as! Int)
+ }
+ for player in teamRaptors {
+ teamRaptorsAverage = teamRaptorsAverage + (player["Height"] as! Int)
+ 
+ }
+ teamSharksAverage = teamSharksAverage / teamSharks.count
+ teamRaptorsAverage = teamRaptorsAverage / teamRaptors.count
+ teamDragonsAverage = teamDragonsAverage / teamDragons.count
+ // Logic
+ while teamSharksAverage - teamRaptorsAverage >= 15 || teamRaptorsAverage - teamSharksAverage >= 15 && teamSharksAverage - teamDragonsAverage >= 15 || teamSharksAverage - teamDragonsAverage - teamSharksAverage >= 15 && teamRaptorsAverage - teamDragonsAverage >= 15 || teamDragonsAverage - teamRaptorsAverage >= 15 {
+ if teamSharksAverage - teamRaptorsAverage >= 15 || teamRaptorsAverage - teamSharksAverage >= 15 {
+ 
+ }
+ }
+ */
 // Printing the players on each team (the array form is still curr
 print(teamSharks)
 /* Experimenting with Function
 func teamSorter(player name: String, isExperienced experienceLevel: Bool, height: Int) -> Void {
-    if experienceLevel == true {     
+    if experienceLevel == true {
         experiencedPlayers.append(name)
     } else {
         nonExperiencedPlayers.append(name)
