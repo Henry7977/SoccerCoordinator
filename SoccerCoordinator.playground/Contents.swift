@@ -78,7 +78,7 @@ sortToTeam(forGroup: nonExperiencedPlayers)
 print(teamSharks)
 /* Experimenting with Function
 func teamSorter(player name: String, isExperienced experienceLevel: Bool, height: Int) -> Void {
-    if experienceLevel == true {
+    if experienceLevel == true {     
         experiencedPlayers.append(name)
     } else {
         nonExperiencedPlayers.append(name)
