@@ -2,7 +2,6 @@
 /* Note that most of these comments were made in order to give me a confirmation of the constant/variable types */
 
 /* Part 1: */
-// Player Information stored in Dictionary
 let player1: [String:Any] = ["Name":"Joe Smith", "Height":42, "Experience":true, "Guardian Names":"Jim and Jan Smith"]
 let player2: [String:Any] = ["Name":"Jill Tanner", "Height":36, "Experience":true, "Guardian Names":"Clara Tanner"]
 let player3: [String:Any] = ["Name":"Bill Bon", "Height":43, "Experience":true, "Guardian Names":"Sara and Jenny Bon"]
@@ -31,10 +30,14 @@ let experienceLevels: [String:Bool] = ["Joe Smith":true,"Jill Tanner":true,"Bill
 /* Part 2: */
 // Variable Declaration
 var experiencedPlayers = [[String:Any]]() // experiencedPlayers is an array with dictionaries
-var nonExperiencedPlayers = [[String:Any]]() //nonExperiencedPlayers is an array with dictionaries
-var teamDragons = [String]() // teamDragons is an array with dictionaries
-var teamSharks = [String]() // teamSharks is an array with dictionaries
-var teamRaptors = [String]() // teamRaptors is an array with dictionaries
+var nonExperiencedPlayers: [[String:Any]] = [] //nonExperiencedPlayers is an array with dictionaries
+var teamDragons: [[String:Any]] = [] // teamDragons is an array with dictionaries
+let teamDragonsPracticeTime = "March 17 at 1pm"
+var teamSharks: [[String:Any]] = [] // teamSharks is an array with dictionaries
+let teamSharksPracticeTime = "March 17 at 3pm"
+var teamRaptors: [[String:Any]] = [] // teamRaptors is an array with dictionaries
+let teamRaptorsPracticeTime = "March 18 at 1pm"
+
 
 for player in players {
     if player["Experience"] as? Bool == true { // Player is a dictionary constant from players array
@@ -62,11 +65,11 @@ for player in players {
 func sortToTeam(forGroup group: [[String:Any]]) {
     for player in group { // group is either experiencedPlayers or nonExperiencedPlayers
         if teamSharks.count <= teamDragons.count && teamSharks.count <= teamRaptors.count {
-            teamSharks.append(player["Name"] as! String)
+            teamSharks.append(player)
         } else if teamDragons.count <= teamRaptors.count && teamDragons.count <= teamSharks.count {
-            teamDragons.append(player["Name"] as! String)
+            teamDragons.append(player)
         } else if teamRaptors.count <= teamSharks.count && teamRaptors.count <= teamDragons.count {
-            teamRaptors.append(player["Name"] as! String)
+            teamRaptors.append(player)
         }
     }
 
@@ -104,19 +107,74 @@ sortToTeam(forGroup: nonExperiencedPlayers)
  }
  }
  */
-// Printing the players on each team (the array form is still curr
-print(teamSharks)
-/* Experimenting with Function
-func teamSorter(player name: String, isExperienced experienceLevel: Bool, height: Int) -> Void {
-    if experienceLevel == true {
-        experiencedPlayers.append(name)
-    } else {
-        nonExperiencedPlayers.append(name)
-    }
- 
-}*/
+
 
 /* Part 3: */
+// Creating Arrays that store Letters
+var teamSharksLetters: [String] = []
+var teamRaptorsLetters: [String] = []
+var teamDragonsLetters: [String] = []
+var letters: [String] = []
+
+/*----------------------------------------------
+ Func letterCreator creates letters based on team
+ ----------------------------------------------*/
+func letterCreator(forTeam: [[String:Any]], teamName: String) -> Void {
+    // Empty Variable letter used to allow letters created to be assigned
+    var letter: String = ""
+    for player in forTeam {
+        // Variable playerName is player's name casted from any to String
+        
+        let playerName = player["Name"] as! String
+        // Variable guardianNames is player's guardian names casted from any to String
+        let guardianNames = player["Guardian Names"] as! String
+        
+        // Assigns basic letter structure with edits depending on player to letters variable
+        letter = "Dear \(guardianNames), \nI would like to congratulate your child \(playerName) for making it to team \(teamName)! We at Vancouver Soccer Academy appreciate the time and effort your family exerted to apply for a spot on the team. Be sure to not miss the first practice on \(teamSharksPracticeTime) and see you on the field! \nSincerely, Coach T.\n"
+        
+        // Decided to assign letters to specific teams array as well (why not?)
+        if teamName == "sharks" {
+            teamSharksLetters.append(letter)
+        } else if teamName == "raptors" {
+            teamRaptorsLetters.append(letter)
+        } else if teamName == "dragons" {
+            teamDragonsLetters.append(letter)
+        }
+        
+        // Letter then appended to letters variable that stores all letters
+        letters.append(letter)
+        
+        /* Code that was too long and was fixed using the one above */ /*
+         if teamName == "Sharks" {
+         letter = " \nDear \(guardianNames), \nI would like to congratulate your child \(playerName) for making it to team \(teamName)! We at Vancouver Soccer Academy appreciate the time and effort your family exerted to apply for a spot on the team. Be sure to not miss the first practice on \(teamSharksPracticeTime) and see you on the field! \nSincerely, Coach T."
+         allLetters.append(letter)
+         teamSharksLetters.append(letter)
+         
+         } else if teamName == "Raptors" {
+         letter = "\nDear \(guardianNames), \nI would like to congratulate your child \(playerName) for making it to team \(teamName)! We at Vancouver Soccer Academy appreciate the time your family took to apply for a spot on the team. Be sure to not miss the first practice on \(teamRaptorsPracticeTime) and see you on the field! \nSincerely, Coach T."
+         allLetters.append(letter)
+         teamRaptorsLetters.append(letter)
+         } else if teamName == "Dragons" {
+         letter = "\nDear \(guardianNames), \nI would like to congratulate your child \(playerName) for making it to team \(teamName)! We at Vancouver Soccer Academy appreciate the time your family took to apply for a spot on the team. Be sure to not miss the first practice on \(teamDragonsPracticeTime) and see you on the field! \nSincerely, Coach T."
+         allLetters.append(letter)
+         teamDragonsLetters.append(letter)
+         }
+         */
+    }
+    
+}
+
+letterCreator(forTeam: teamSharks, teamName: "sharks")
+letterCreator(forTeam: teamDragons, teamName: "dragons")
+letterCreator(forTeam: teamRaptors, teamName: "raptors")
+
+for letter in letters {
+    print(letter)
+}
+
+
+
+
 
 
 
