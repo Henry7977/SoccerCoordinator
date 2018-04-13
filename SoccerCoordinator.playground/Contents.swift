@@ -123,14 +123,24 @@ func letterCreator(forTeam: [[String:Any]], teamName: String) -> Void {
     // Empty Variable letter used to allow letters created to be assigned
     var letter: String = ""
     for player in forTeam {
-        // Variable playerName is player's name casted from any to String
+
+        var practiceTime: String = ""
+        // Logic Determines Practice Time depending on team
+        if teamName == "sharks" {
+            practiceTime = teamSharksPracticeTime
+        } else if teamName == "raptors" {
+            practiceTime = teamRaptorsPracticeTime
+        } else if teamName == "dragons" {
+            practiceTime = teamDragonsPracticeTime
+        } 
         
+        // Variable playerName is player's name casted from any to String
         let playerName = player["Name"] as! String
         // Variable guardianNames is player's guardian names casted from any to String
         let guardianNames = player["Guardian Names"] as! String
         
         // Assigns basic letter structure with edits depending on player to letters variable
-        letter = "Dear \(guardianNames), \nI would like to congratulate your child \(playerName) for making it to team \(teamName)! We at Vancouver Soccer Academy appreciate the time and effort your family exerted to apply for a spot on the team. Be sure to not miss the first practice on \(teamSharksPracticeTime) and see you on the field! \nSincerely, Coach T.\n"
+        letter = "Dear \(guardianNames), \nI would like to congratulate your child \(playerName) for making it to team \(teamName)! We at Vancouver Soccer Academy appreciate the time and effort your family exerted to apply for a spot on the team. Be sure to not miss the first practice on \(practiceTime) and see you on the field! \nSincerely, Coach T.\n"
         
         // Decided to assign letters to specific teams array as well (why not?)
         if teamName == "sharks" {
